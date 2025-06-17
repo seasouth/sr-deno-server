@@ -1,6 +1,6 @@
 import { handleWebSocket } from "./websocket.ts";
 
-console.log("Listening on http://localhost:8000");
+console.log("Listening...");
 
 Deno.serve((req) => {
   const { pathname } = new URL(req.url);
