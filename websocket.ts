@@ -1,5 +1,5 @@
-import { client } from "./db.ts";
-import { insertRowToTable } from "./insertRowToTable.ts";
+import { client } from "./db/db.ts";
+import { insertRowToTable } from "./db/insertRowToTable.ts";
 
 export function handleWebSocket(req: Request): Response {
   const { socket, response } = Deno.upgradeWebSocket(req);
@@ -9,6 +9,7 @@ export function handleWebSocket(req: Request): Response {
   };
 
   socket.onmessage = async (e) => {
+    console.log("WebSocket message received:", e);
     const message = e.data;
     console.log("Received:", message);
 

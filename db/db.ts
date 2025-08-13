@@ -1,5 +1,5 @@
 import { Client } from "@postgres/mod.ts";
-import { loadEnv } from "./config/env.ts";
+import { loadEnv } from "../config/env.ts";
 
 await loadEnv();
 
