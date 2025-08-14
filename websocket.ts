@@ -20,13 +20,23 @@ export function handleWebSocket(req: Request): Response {
     parsedMessage.sent_at = new Date();
     console.log("Parsed message:", parsedMessage);
 
-    insertRowToTable("messages", parsedMessage, client)
-      .then(() => {
-        console.log("Row inserted successfully");
-      })
-      .catch((error) => {
-        console.error("Error inserting row:", error);
-      });
+    if (message?.type == "message") {
+      insertRowToTable("messages", parsedMessage, client)
+        .then(() => {
+          console.log("Row inserted successfully");
+        })
+        .catch((error) => {
+          console.error("Error inserting row:", error);
+        });
+    } else if (message?.type == "group") {
+      insertRowToTable("chats", parsedMessage, client)
+        .then(() => {
+          console.log("Chat inserted successfully");
+        })
+        .catch((error) => {
+          console.error("Error inserting chat:", error);
+        });
+    }
 
     // Echo or do a DB query
     if (message === "get_messages") {
