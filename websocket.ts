@@ -29,7 +29,7 @@ export function handleWebSocket(req: Request): Response {
           console.error("Error inserting row:", error);
         });
     } else if (message?.type == "group") {
-      insertRowToTable("chats", parsedMessage, client)
+      insertRowToTable("chats", parsedMessage.data, client)
         .then(() => {
           console.log("Chat inserted successfully");
         })
