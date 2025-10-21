@@ -21,7 +21,7 @@ export function handleWebSocket(req: Request): Response {
       console.log("Generated ID:", generatedId);
       parsedMessage.id = generatedId
       parsedMessage.sent_at = new Date();
-      insertRowToTable("messages", parsedMessage, client)
+      insertRowToTable("messages", parsedMessage.data, client)
         .then(() => {
           console.log("Row inserted successfully");
         })
