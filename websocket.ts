@@ -39,11 +39,6 @@ export function handleWebSocket(req: Request): Response {
     }
   };
 
-  socket.onclose = async () => {
-    console.log("WebSocket closed");
-    await client.end();
-  };
-
   socket.onerror = (e) => {
     console.error("WebSocket error:", e);
   };
